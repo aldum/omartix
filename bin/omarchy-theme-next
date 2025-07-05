@@ -3,7 +3,8 @@
 THEMES_DIR="$HOME/.config/omarchy/themes/"
 CURRENT_THEME_LINK="$HOME/.config/omarchy/current/theme"
 
-THEMES=($(find "$THEMES_DIR" -mindepth 1 | sort))
+declare -a THEMES
+mapfile -t THEMES < <(find "$THEMES_DIR" -mindepth 1 | sort)
 TOTAL=${#THEMES[@]}
 
 # Get current theme from symlink
@@ -41,7 +42,7 @@ makoctl reload
 hyprctl reload
 
 # Set new background
-ln -nsf $(find "$HOME/.config/omarchy/current/backgrounds/" -type f | head -n 1) "$HOME/.config/omarchy/current/background"
+ln -nsf "$(find "$HOME/.config/omarchy/current/backgrounds/" -type f | head -n 1)" "$HOME/.config/omarchy/current/background"
 pkill -x swaybg
 setsid swaybg -i "$HOME/.config/omarchy/current/background" -m fill &
 
