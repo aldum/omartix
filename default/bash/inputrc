@@ -1,3 +1,4 @@
+#!/bin/bash
 set meta-flag on
 set input-meta on
 set output-meta on

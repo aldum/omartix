@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "Switching from vlc to mpv for the default video player"
 yay -Rns --noconfirm vlc
 rm ~/.local/share/applications/vlc.desktop
