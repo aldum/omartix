@@ -52,9 +52,9 @@ EOF
   chmod +x "$DESKTOP_FILE"
 }
 
-web2app-remove() {
+web2app_remove() {
   if [ "$#" -ne 1 ]; then
-    echo "Usage: web2app-remove <AppName>"
+    echo "Usage: web2app_remove <AppName>"
     return 1
   fi
 
@@ -68,7 +68,7 @@ web2app-remove() {
 }
 
 # Ensure changes to ~/.XCompose are immediately available
-refresh-xcompose() {
+refresh_xcompose() {
   pkill fcitx5
   setsid fcitx5 &>/dev/null &
 }
