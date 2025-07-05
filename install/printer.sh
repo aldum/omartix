@@ -1,3 +1,8 @@
 #!/bin/bash
 sudo pacman -S --noconfirm cups cups-pdf cups-filters system-config-printer
-sudo systemctl enable --now cups.service
+if [[ "$ARTIX" == "true" ]]
+then
+  sudo dinitctl enable cupsd
+else
+  sudo systemctl enable cups
+fi

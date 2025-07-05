@@ -6,6 +6,12 @@ set -e
 # Give people a chance to retry running the installation
 trap 'echo "Omarchy installation failed! You can retry by running: source ~/.local/share/omarchy/install.sh"' ERR
 
+source /etc/os-release
+if [[ "$ID" == "artix" ]]
+then
+  ARTIX=true
+  export ARTIX
+fi
 # Install everything
 for f in ~/.local/share/omarchy/install/*.sh; do source "$f"; done
 

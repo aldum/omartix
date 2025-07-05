@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ~/.local/share/omarchy
+cd ~/.local/share/omarchy || exit
 
 if [[ $1 == "all" ]]; then
   # Run all migrations
@@ -18,11 +18,11 @@ for file in migrations/*.sh; do
   filename=$(basename "$file")
   migrate_at="${filename%.sh}"
 
-  if [ $migrate_at -gt $last_updated_at ]; then
+  if [ "$migrate_at" -gt "$last_updated_at" ]; then
     echo "Running migration ($migrate_at)"
-    source $file
+    source "$file"
   fi
 done
 
 # Back to where we came from
-cd - >/dev/null
+cd - >/dev/null || exit

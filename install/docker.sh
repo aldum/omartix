@@ -6,7 +6,12 @@ sudo mkdir -p /etc/docker
 echo '{"log-driver":"json-file","log-opts":{"max-size":"10m","max-file":"5"}}' | sudo tee /etc/docker/daemon.json
 
 # Start Docker automatically
-sudo systemctl enable docker
+if [[ "$ARTIX" == "true" ]]
+then
+  sudo dinitctl enable dockerd
+else
+  sudo systemctl enable dockerd
+fi
 
 # Give this user privileged Docker access
-sudo usermod -aG docker ${USER}
+sudo usermod -aG docker "${USER}"
