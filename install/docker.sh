@@ -1,3 +1,4 @@
+#!/bin/bash
 yay -S --noconfirm --needed docker docker-compose
 
 # Limit log size to avoid running out of disk
