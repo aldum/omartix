@@ -2,11 +2,11 @@
 sudo pacman -S --needed --noconfirm base-devel
 
 if ! command -v yay &>/dev/null; then
-  cd /tmp
+  cd /tmp || return
   git clone https://aur.archlinux.org/yay-bin.git
-  cd yay-bin
+  cd yay-bin || return
   makepkg -si --noconfirm
-  cd -
+  cd - || return
   rm -rf yay-bin
-  cd ~
+  cd ~ || return
 fi

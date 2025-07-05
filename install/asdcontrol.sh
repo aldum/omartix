@@ -2,10 +2,10 @@
 # Install asdcontrol for controlling brightness on Apple Displays
 if ! command -v asdcontrol &>/dev/null; then
   git clone https://github.com/nikosdion/asdcontrol.git /tmp/asdcontrol
-  cd /tmp/asdcontrol
+  cd /tmp/asdcontrol || return
   make
   sudo make install
-  cd -
+  cd - || return
   rm -rf /tmp/asdcontrol
 
   # Setup sudo-less controls
